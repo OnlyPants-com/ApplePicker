@@ -7,7 +7,7 @@ public class ApplePicker : MonoBehaviour
 {
     [Header("Inscribed")]
     public GameObject basketPrefab;
-    public int numBaskets = 3;
+    public int numBaskets = 4;
     public float basketBottomY = -14f;
     public float basketSpacingY = 2f;
     public List<GameObject> basketList;
@@ -15,6 +15,7 @@ public class ApplePicker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //basketList = new List<GameObject>();
         for (int i = 0; i < numBaskets; i++)
         {
             GameObject tBasketGO = Instantiate<GameObject>(basketPrefab);
@@ -45,7 +46,7 @@ public class ApplePicker : MonoBehaviour
         //If there are no baskets left, restart the game
         if (basketList.Count == 0)
         {
-            SceneManager.LoadScene("_Scene_0");
+            SceneManager.LoadScene("GameOver");
         }
     }
 }
