@@ -11,13 +11,14 @@ public class AppleTree : MonoBehaviour
     public float leftAndRightEdge = 10f;
     public float changeDirChance = 0.1f;
     public float appleDropDelay = 1f;
-    public float branchChance = 0.2f;
+    public float branchDropDelay = 4f;
+    //public float branchChance = 6f;
     // Start is called before the first frame update
     void Start()
     {
         //Start dropping apples
-        //Invoke("DropApple", 2f);
-        Invoke("DropApple", 2f);
+        InvokeRepeating("DropApple", 2f, appleDropDelay);
+        InvokeRepeating("DropBranch", 3f, branchDropDelay);
     }
 
     // void DropItem()
@@ -39,14 +40,14 @@ public class AppleTree : MonoBehaviour
     {
         GameObject apple = Instantiate<GameObject>(applePrefab);
         apple.transform.position = transform.position;
-        Invoke("DropApple", appleDropDelay);
+        //Invoke("DropApple", appleDropDelay);
     }
 
     void DropBranch()
     {
         GameObject branch = Instantiate<GameObject>(branchPrefab);
         branch.transform.position = transform.position;
-        Invoke("DropBranch", branchChance);
+        //Invoke("DropBranch", branchDropDelay);
     }
 
     // Update is called once per frame

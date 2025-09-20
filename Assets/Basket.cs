@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 //using UnityEngine.SocialPlatforms.Impl;
 
 public class Basket : MonoBehaviour
 {
     public ScoreCounter scoreCounter;
+    public RoundCounter roundCounter;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,8 @@ public class Basket : MonoBehaviour
         GameObject scoreGO = GameObject.Find("ScoreCounter");
         //Get the ScoreCounter (Script) component of scoreGO
         scoreCounter = scoreGO.GetComponent<ScoreCounter>();
+        GameObject roundGO = GameObject.Find("RoundCounter");
+        roundCounter = roundGO.GetComponent<RoundCounter>();
     }
 
     // Update is called once per frame
@@ -46,11 +51,23 @@ public class Basket : MonoBehaviour
             if (collidedWith.CompareTag("Apple"))
             {
                 scoreCounter.score += 100;
+                if (scoreCounter.score >= 1000 && scoreCounter.score < 2000)
+                {
+                    roundCounter.roundNum = 2;
+                }
+                else if (scoreCounter.score >= 2000 && scoreCounter.score < 3000)
+                {
+                    roundCounter.roundNum = 3;
+                }
+                else if (scoreCounter.score >= 3000 && scoreCounter.score < 4000)
+                {
+                    roundCounter.roundNum = 4;
+                }   
             }
 
             else if (collidedWith.CompareTag("Branch"))
             {
-                
+                SceneManager.LoadScene("GameOver");
             }
             
             HighScore.TRY_SET_HIGH_SCORE(scoreCounter.score);

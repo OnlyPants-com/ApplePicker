@@ -34,6 +34,11 @@ public class ApplePicker : MonoBehaviour
         {
             Destroy(tempGO);
         }
+        // GameObject[] branchArray = GameObject.FindGameObjectsWithTag("Branch");
+        // foreach (GameObject temp in branchArray)
+        // {
+        //     Destroy(temp);
+        // }
         //Destroy one of the Bakets
         //Get the index of the last Basket in basketList
         int basketIndex = basketList.Count - 1;
@@ -48,5 +53,10 @@ public class ApplePicker : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
         }
+    }
+    public void branchMissed()
+    {
+        GameObject branch = GameObject.FindGameObjectWithTag("Branch");
+        Destroy(branch);
     }
 }

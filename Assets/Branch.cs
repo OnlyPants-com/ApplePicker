@@ -14,7 +14,7 @@ public class Branch : MonoBehaviour
             // Get a reference to the ApplePicker component of Main Camera
             ApplePicker brScript = Camera.main.GetComponent<ApplePicker>();
             //Call the public AppleMissed() method of apScript
-            brScript.AppleMissed();
+            brScript.branchMissed();
         }
     }
 }
